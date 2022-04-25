@@ -1,0 +1,64 @@
+<div class="container">
+
+    {{#each category}}
+
+    {{#if this.name}}
+
+    <h4>Editar a categoria: {{this.name}}</h4>
+    <div class="card" style="margin-bottom: 10px;">
+        <div class="card-content">
+
+            <form action="/admin/categories/update/{{this._id}}" method="post">
+
+                <div class="">
+
+                    <div class="">
+
+                        <div class="input-field">
+                            <label for="name">Nome</label>
+                            <input placeholder="Nome" id="name" value="{{this.name}}" name="name" type="text"
+                                class="validate">
+                        </div>
+                        <div class="input-field">
+                            <label for="slug">Slug</label>
+                            <input placeholder="slug" id="slug" value="{{this.slug}}" name="slug" type="text"
+                                class="validate">
+                        </div>
+                        <div class="input-field">
+                            <label for="description">Descrição</label>
+                            <textarea id="description" placeholder="Descrição da categoria" name="description"
+                                class="materialize-textarea">{{this.description}}</textarea>
+                        </div>
+
+                        <div class="">
+                            <label class="status">Status</label>
+                            <select class="browser-default" id="status" name="status">
+                                <option value="1"
+                                {{#if this.status}}
+                                    <option value="1" selected>Ativo</option>
+                                    <option value="0" >Bloqueado</option>
+                                    {{else}}
+                                    <option value="1">Ativo</option>
+                                    <option value="0" selected>Bloqueado</option>
+                                {{/if}}
+                            </select>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="modal-footer">
+                    <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat ">Cancelar</a>
+                    <button type="submit"
+                        class="modal-action modal-close waves-effect waves-green btn-flat ">Salvar</button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+    {{/if}}
+
+    {{/each}}
+</div>

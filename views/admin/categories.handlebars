@@ -1,0 +1,105 @@
+<div class="container">
+    <div class="header" style="margin-top: 2em;">
+        <h1>Categorias</h1>
+        <button id="formToggle" class="btn">Adicionar</button>
+    </div>
+    <hr>
+    <div class="card 
+    {{#if has_errors}}
+        form_with_errors
+        {{else}}
+        catForm
+    {{/if}}
+     " id="formCat">
+        <div class="card-header">
+            Registar categoria
+        </div>
+
+        <form action="/admin/categories/store" method="post">
+            <div class="card-content">
+
+                {{#each errors}}
+                <div class="error-msg">{{ msg }}</div>
+                {{else}}
+                {{/each}}
+
+                <div class="">
+
+                    <div class="input-field">
+                        <label for="name">Nome</label>
+                        <input placeholder="Nome" id="name" name="name" type="text" class="validate">
+                    </div>
+                    <div class="input-field">
+                        <label for="slug">Slug</label>
+                        <input placeholder="slug" id="slug" name="slug" type="text" class="validate">
+                    </div>
+                    <div class="input-field">
+                        <label for="description">Descrição</label>
+                        <textarea id="description" placeholder="Descrição da categoria" name="description"
+                            class="materialize-textarea"></textarea>
+                    </div>
+
+                    <div class="">
+                        <label class="status">Status</label>
+                        <select id="status" class="browser-default" required name="status">
+                            <option value="1">Ativo</option>
+                            <option value="0">Bloqueado</option>
+                        </select>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="card-action">
+                <button class="btn">Registar</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="categories-list">
+        {{#each categories}}
+
+        {{#each this}}
+
+        {{#if this.name}}
+        <div class="card" style="margin-bottom: 20px;">
+            <div class="card-content">
+                <h3>{{this.name}}</h3>
+                <p> <b>Slug: </b>{{ this.slug }}</p>
+                <p>{{ this.description }}</p>
+                <hr>
+                <a class="waves-effect waves-light btn modal-trigger"
+                    href="/admin/categories/{{this._id}}/edit">Editar</a>
+                <a class="waves-effect waves-light btn " href="/admin/categories/{{this._id}}/show">Visualizar</a>
+
+                <form style="display: inline;" action="/admin/categories/{{this._id}}/delete" method="post">
+                    <button onclick="return confirm('Tens certeza?')" type="submit" class="btn red">Excluir</button>
+                </form>
+            </div>
+        </div>
+
+        {{/if}}
+
+        {{/each}}
+
+        {{else}}
+        <h2>Nenhuma categoria registada</h2>
+        {{/each}}
+    </div>
+</div>
+
+<script>
+
+    $(() => {
+        $(".catForm").fadeToggle(200)
+
+        $("#formToggle").click(() => {
+            $("#formCat").fadeToggle(200)
+        })
+
+        // modal
+        // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
+        $('.modal').modal();
+    })
+
+</script>

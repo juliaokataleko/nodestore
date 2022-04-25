@@ -1,0 +1,58 @@
+nav {
+    background-color: #114de4;
+    height: 70px;
+    line-height: 70px;
+}
+
+h1 {
+    font-size: 34px;
+}
+
+h2 {
+    font-size: 30px;
+}
+
+h3 {
+    font-size: 28px;
+}
+
+.card-content {
+    margin-top: 0;
+    padding-top: 10px !important;
+}
+
+.error-msg {
+    background: #d54351;
+    color: #fff;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.success-msg {
+    background: #16a982;
+    color: #fff;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btn {
+    background: #1e59ed;
+    color: #fff;
+    transition: 0.3s;
+    box-shadow: 1px 0px 2px 0px #ddd;
+}
+
+.btn:hover {
+    background: #c04023;
+}
+
+.red {
+    background: #d11e1e !important;
+}

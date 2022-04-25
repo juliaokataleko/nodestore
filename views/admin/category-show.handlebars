@@ -1,0 +1,19 @@
+<div class="container">
+<h1>Exibir categoria</h1>
+
+{{#each category}}
+
+    {{#if this.name}}
+    <div class="card" style="margin-bottom: 10px;">
+        <div class="card-content">
+            <h3>{{this.name}}</h3>
+            <p> <b>Slug: </b>{{ this.slug }}</p>
+            <p>{{ this.description }}</p>
+            <hr>
+            <a class="waves-effect waves-light btn " href="/admin/categories">Voltar</a>
+        </div>
+    </div>
+    {{/if}}
+
+{{/each}}
+</div>
